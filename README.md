@@ -6,7 +6,7 @@
 
 check common express unit test scenarios with expect
 
-* setup your imports and configre expect-express
+* setup your imports and configure expect-express
 ```javascript
 const router = require('express').Router();
 const expect = require('expect');
