@@ -11,7 +11,6 @@ describe('toHaveRouteParameter', () => {
     });
     it('should fail if input is no route', () => {
         expect(() => {
-            console.log("route", expectExpress.getRoute(router, 'DELETE', '/:id'));
             expect(expectExpress.getRoute(router, 'DELETE', '/:id')).toHaveRouteParameter('id');
         }).toThrow();
     });

@@ -4,16 +4,34 @@
 [![npm](https://img.shields.io/npm/v/npm.svg?maxAge=2592000)](http://npm.im/expect-express)
 [![downloads](https://img.shields.io/npm/dm/expect-express.svg?style=flat-square)](http://npm-stat.com/charts.html?package=expect-express)
 
-test common express unit test scenarios with expect
+check common express unit test scenarios with expect
 
+* setup your imports and configre expect-express
 ```javascript
 const router = require('express').Router();
 const expect = require('expect');
 const expectExpress = require('expect-express');
 expect.extend(expectExpress);
+```
+* define your system under test
+```javascript
+function namedMiddleware(req, res, next) {
+    next();
+}
 
-router.get('/:id', () => {});
-
+router.get('/:id', namedMiddleware, (req, res, next) => { next(); }, () => {});
+```
+* test if a route is defined by specifying an HTTP verb and a path
+```javascript
 expect(router).toHaveRoute('GET', '/:id');
+```
+* test if a given route has params defined
+  getRoute helper methods facilitates route selection
+```javascript
 expect(expectExpress.getRoute(router, 'GET', '/:id')).toHaveRouteParameter('id');
+```
+* test if specific middleware (name or anonymous) is defined for given route
+```javascript
+expect(expectExpress.getRoute(router, 'GET', '/:id')).toHaveMiddleware('namedMiddleware');
+expect(expectExpress.getRoute(router, 'GET', '/:id')).toHaveMiddleware();
 ```
