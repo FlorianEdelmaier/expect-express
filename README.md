@@ -26,7 +26,7 @@ router.get('/:id', namedMiddleware, (req, res, next) => { next(); }, () => {});
 expect(router).toHaveRoute('GET', '/:id');
 ```
 * test if a given route has params defined
-  getRoute helper methods facilitates route selection
+    getRoute helper methods facilitates route selection
 ```javascript
 expect(expectExpress.getRoute(router, 'GET', '/:id')).toHaveRouteParameter('id');
 ```

@@ -22,6 +22,11 @@ describe('Helper', () => {
             expect(helper.isRoute({ path: '/' })).toEqual(false);
         });
     });
+    describe('isMiddleware', () => {
+        it('should validate middleware', () => {
+            expect(helper.isMiddleware((res, req, next) => {})).toEqual(true);
+        });
+    });
     describe('getSubRoute', () => {
         let subRouter;
         before('setup', () => {
