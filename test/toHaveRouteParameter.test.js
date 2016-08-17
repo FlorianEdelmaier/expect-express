@@ -11,17 +11,17 @@ describe('toHaveRouteParameter', () => {
     });
     it('should fail if input is no route', () => {
         expect(() => {
-            expect(expectExpress.getRoute(router, 'DELETE', '/:id')).toHaveRouteParameter('id');
+            expect(expectExpress.helper.getRoute(router, 'DELETE', '/:id')).toHaveRouteParameter('id');
         }).toThrow();
     });
     it('should fail if parameter not defined', () => {
         expect(() => {
-            expect(expectExpress.getRoute(router, 'GET', '/:id')).toHaveRouteParameter('test');
+            expect(expectExpress.helper.getRoute(router, 'GET', '/:id')).toHaveRouteParameter('test');
         }).toThrow(/is not defined/);
     });
     it('should pass if parameter is defined', () => {
         expect(() => {
-            expect(expectExpress.getRoute(router, 'GET', '/:id')).toHaveRouteParameter('id');
+            expect(expectExpress.helper.getRoute(router, 'GET', '/:id')).toHaveRouteParameter('id');
         }).toNotThrow();
     });
 });

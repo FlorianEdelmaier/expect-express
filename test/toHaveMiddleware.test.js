@@ -19,27 +19,27 @@ describe('toHaveMiddleware', () => {
     });
     it('should fail if input is no route', () => {
         expect(() => {
-            expect(expectExpress.getRoute(router, 'DELETE', '/:id')).toHaveMiddleware();
+            expect(expectExpress.helper.getRoute(router, 'DELETE', '/:id')).toHaveMiddleware();
         }).toThrow(/is undefined/);
     });
     it('should fail if not middleware defined', () => {
         expect(() => {
-            expect(expectExpress.getRoute(router, 'PUT', '/')).toHaveMiddleware();
+            expect(expectExpress.helper.getRoute(router, 'PUT', '/')).toHaveMiddleware();
         }).toThrow(/No middleware found/);
     });
     it('should pass without parameter if middleware is anonymous function', () => {
         expect(() => {
-            expect(expectExpress.getRoute(router, 'GET', '/')).toHaveMiddleware();
+            expect(expectExpress.helper.getRoute(router, 'GET', '/')).toHaveMiddleware();
         }).toNotThrow();
     });
     it('should find middleware by name', () => {
         expect(() => {
-            expect(expectExpress.getRoute(router, 'POST', '/test')).toHaveMiddleware('namedMiddleware1');
+            expect(expectExpress.helper.getRoute(router, 'POST', '/test')).toHaveMiddleware('namedMiddleware1');
         }).toNotThrow();
     });
     it('shoudl find named middleware even if more than one defined', () => {
         expect(() => {
-            expect(expectExpress.getRoute(router, 'POST', '/test')).toHaveMiddleware('namedMiddleware2');
+            expect(expectExpress.helper.getRoute(router, 'POST', '/test')).toHaveMiddleware('namedMiddleware2');
         }).toNotThrow();
     });
 });

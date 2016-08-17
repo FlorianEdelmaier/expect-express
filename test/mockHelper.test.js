@@ -64,7 +64,7 @@ describe('Mock helper', () => {
     });
     describe('getMockMiddleware', () => {
         it('should return req/res mock and next spy', () => {
-            const mw = helper.getMockMiddleware('GET', '/');
+            const mw = helper.getMockMiddlewareParam('GET', '/');
             expect(mw.req).toBeAn('object');
             expect(mw.res).toBeAn('object');
             expect(mw.nextSpy.__isSpy).toEqual(true);
