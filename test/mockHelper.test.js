@@ -69,5 +69,10 @@ describe('Mock helper', () => {
             expect(mw.res).toBeAn('object');
             expect(mw.nextSpy.__isSpy).toEqual(true);
         });
+        it('should make next function spyable', () => {
+            const mw = helper.getMockMiddlewareParam('GET', '/');
+            mw.nextSpy();
+            expect(mw.nextSpy).toHaveBeenCalled();
+        });
     });
 });
