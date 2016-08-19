@@ -1,6 +1,6 @@
 {
   "name": "expect-express",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "common express testing assertions",
   "main": "index.js",
   "scripts": {
