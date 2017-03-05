@@ -42,4 +42,9 @@ describe('toHaveMiddleware', () => {
             expect(expectExpress.helper.getRoute(router, 'POST', '/test')).toHaveMiddleware('namedMiddleware2');
         }).toNotThrow();
     });
+    it('should find middleware by func comparison', () => {
+        expect(() => {
+            expect(expectExpress.helper.getRoute(router, 'POST', '/test')).toHaveMiddleware(namedMiddleware1);
+        }).toNotThrow();
+    });
 });

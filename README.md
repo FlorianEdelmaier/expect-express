@@ -33,8 +33,9 @@ expect(router).toHaveRoute('GET', '/:id');
 ```javascript
 expect(expectExpress.helper.getRoute(router, 'GET', '/:id')).toHaveRouteParameter('id');
 ```
-* test if specific middleware (name or anonymous) is defined for given route
+* test if specific middleware (function, name or anonymous) is defined for given route
 ```javascript
+expect(expectExpress.helper.getRoute(router, 'GET', '/:id')).toHaveMiddleware(namedMiddleware);
 expect(expectExpress.helper.getRoute(router, 'GET', '/:id')).toHaveMiddleware('namedMiddleware');
 expect(expectExpress.helper.getRoute(router, 'GET', '/:id')).toHaveMiddleware();
 ```
